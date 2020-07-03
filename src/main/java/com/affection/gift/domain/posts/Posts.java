@@ -1,5 +1,6 @@
 package com.affection.gift.domain.posts;
 
+import com.affection.gift.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import javax.persistence.*;
 //Posts클래스는 실제 DB테이블과 매칭될 클래스(Entity 클래스)
 //Entity클래스에는 절대 Setter메소드를 만들지 않음
 //대신, 해당 필드의 값 변경이 필요하면 반드시 목적과 의도를 나타낼 수 있는 메소드 추가
-public class Posts {
+public class Posts extends BaseTimeEntity {
     //@Id
     //해당 테이블의 PK필드를 나타낸다
     @Id

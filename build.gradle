@@ -38,5 +38,7 @@ dependencies {
     // 초기화한다는 점을 이용하여 테스트 용도로 많이 사용됨
     //JPA의 테스트, 로컬환경에서의 구동에서 사용할 예정
     compile('com.h2database:h2')
+    //템플릿엔진 - mustache등록
+    compile('org.springframework.boot:spring-boot-starter-mustache')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
