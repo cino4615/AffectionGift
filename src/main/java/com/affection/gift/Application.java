@@ -11,7 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 //@EnableJpaAuditing
 //JPA Auditing 어노테이션들을 모두 활성화 할 수 있도록 추가하는 어노테이션
 @SpringBootApplication
-@EnableJpaAuditing
+//SpringBootApplication과 EnableJpaAuditing을 분리, JpaConfig로 이동
+//@EnableJpaAuditing
 public class Application {
     public static void main(String[] args) {
         //SpringApplication.run 으로 내장 WAS(외부 WAS를 두지않고)를 실행

@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //단, @Service, @Component, @Repository 등은 사용할 수 없다.
 //여기서는 컨트롤러만 사용하기 때문에 선언함
 @RunWith(SpringRunner.class)
+//스캔 대상에서 SecurityConfig 클래스 제외
 @WebMvcTest(controllers = HelloController.class, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class) })
 public class HelloControllerTest {
