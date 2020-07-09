@@ -18,11 +18,18 @@ cache:
 
 script: "./gradlew clean build"
 
-before_deploy:
-  - zip -r affection-gift *
-  - mkdir -p deploy
-  - mv affection-gift.zip deploy/affection-gift.zip
+#deploy 명령어가 실행되기 전에 수행됨
+#CodeDeploy는 Jar 파일은 인식하지 못하므로 Jar+ 기타 설정 파일들을 모아 압축(zip)함
+#zip -r affection-gift * : 현재 위치의 모든 파일을 affection-gift라는 이름으로 압축
+#mkdir -p deploy : deploy라는 디렉토리를 Travis CI가 실행중인 위치에서 생성
+#mv affection-gift.zip deploy/affection-gift.zip : 파일을 deploy/affection-gift.zip으로 이동
+before_dep deploy
+  - mv affecloy:
+      - zip -r affection-gift *
+      - mkdir -ption-gift.zip deploy/affection-gift.zip
 
+#deploy : S3로 파일 업로드 혹은 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
+#local_dir:deploy : 앞에서 생성한 deploy디렉토리를 지정, 해당위치의 파일들만 S3로 전송
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY #Travis repo settings 에 설정된 값
@@ -33,6 +40,17 @@ deploy:
     acl: private #zip 파일 접근을 private로
     local_dir: deploy #before_deploy에서 생성한 디렉토리
     wait-util-delployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY #Travis repo settings 에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY #Travis repo settings에 설정된 값
+    bucket: affection-gift-build #s3버킷
+    key: affection-gift.zip #빌드 파일을 압축해서 전달
+    bundle_type: zip #압축 확장자
+    application: affection-gift #웹 콘솔에서 등록한 CodeDeploy 애플리케이션
+    deployment_group: affection-gift-group #웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
 
 #CI 실행 완료 시 메일로 알람
 notifications:
