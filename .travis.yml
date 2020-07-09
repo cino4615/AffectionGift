@@ -6,6 +6,10 @@ branches:
   only:
     - master
 
+#./gradlew: Permission denied git에 permission을 업데이트 해줘야 travis가 실행할 수 있다.
+before_install:
+  - chmod +x gradlew
+
 #travis CI 서버의 Home
 cache:
   directories:
