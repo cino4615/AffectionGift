@@ -13,11 +13,13 @@ import java.util.List;
 public interface PostsRepository extends JpaRepository<Posts, Long> {
 
     //규모가 있는 프로젝트의 경우 데이터 조회는 PK조인, 복잡한 조건으로 인해
-    //Entity클래스 만으로 처리하기 어려워 조회용 프레임워크를 추가로 사용하기도함, Myvatis, Jooq, Querydsl(추천)
-    //조회는 조회용프레임워크를 사용하고, 등록/수정/삭제는 SpringDataJpa를 통해 진행
+    //Entity클래스 만으로 처리하기 어려워 조회용 프레임워크를 추가로 사용하기도함, Mybatis, Jooq, Querydsl(추천)
+    //조회는 조회용 프레임워크를 사용하고, 등록/수정/삭제는 SpringDataJpa를 통해 진행
+
     //@Query
     //SpringDataJpa에서 제공하지 않는 메소드는 쿼리로 작성가능
     //밑의 쿼리는 SpringDataJpa에서 제공하는 기본메소드로 작성가능하지만 가독성은 @Query가 더 좋다
+    //SELECT p FROM Posts p에서 Posts에 p라는 별칭을 준 것, JPQL에서 엔티티의 별칭은 필수적으로 명시해야 한다
     @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
     List<Posts> findAllDesc();
 

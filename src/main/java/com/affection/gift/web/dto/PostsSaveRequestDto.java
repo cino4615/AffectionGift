@@ -20,6 +20,8 @@ public class PostsSaveRequestDto {
         this.author = author;
     }
 
+    // toEntity 메소드 호출 시 위에서 생성한 빌더패턴으로 생성된 엔티티를 넘겨줌
+    // 빌더 패턴의 장점 : 어떤 매개변수에 어떤 값이 들어갔는지 직관적으로 알수있음
     public Posts toEntity(){
         return Posts.builder()
                 .title(title)

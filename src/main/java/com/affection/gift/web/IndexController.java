@@ -46,7 +46,7 @@ public class IndexController {
     //URL의 정의 부분과 메소드의 파라미터 부분에 정의를 하여 사용함
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model){
-
+        //PostsResponseDto :  Getter와 생성자만 존재하는 Dto 클래스
         PostsResponseDto dto = postsService.findById(id);
 
         model.addAttribute("post", dto);

@@ -21,28 +21,33 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class PostsService {
+
     private final PostsRepository postsRepository;
 
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
+    //스프링의 트랜잭션 처리방법 중 어노테이션 방식으로 처리하는, 선언적 트랜잭션
+    //@Transaction을 적어주면 이 클래스에 트랜잭션 기능이 적용된 프록시 객체가 생성됨
+    //해당 어노테이션이 포함된 메소드가 호출될 경우 PlatformTransactionManager를 사용하여
+    //트랜잭션을 시작하고, 정상 여부에 따라 Rollback 또는 Commit 한다
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto){
         Posts posts = postsRepository.findById(id)
-                        .orElseThrow(()->
-                             new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
-                        posts.update(requestDto.getTitle(), requestDto.getContent());
+                .orElseThrow(()->
+                        new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+        posts.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
 
     public PostsResponseDto findById(Long id){
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(()->
-                new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+                        new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
         return new PostsResponseDto(entity);
     }
-    
+
     //readOnly = true속성
     //트랜잭션 범위는 유지하되, 조회기능만 남겨두어 조회속도가 개선
     //등록/수정/삭제 기능이 전혀 없는 서비스 메소드에서 사용 추천
