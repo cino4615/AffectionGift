@@ -6,11 +6,10 @@ branches:
   only:
     - master
 
-#./gradlew: Permission denied git에 permission을 업데이트 해줘야 travis가 실행할 수 있다.
 before_install:
   - chmod +x gradlew
 
-#travis CI 서버의 Home
+# Travis CI 서버의 Home
 cache:
   directories:
     - '$HOME/.m2/repository'
@@ -18,23 +17,8 @@ cache:
 
 script: "./gradlew clean build"
 
-#CI 실행 완료 시 메일로 알람
+# CI 실행 완료시 메일로 알람
 notifications:
   email:
     recipients:
       - cino4615@gmail.com
-
-#branches
-#Travis CI를 어느 브랜치가 푸시될 때 실행 할지 지정합니다.
-#현재 옵션은 오직 master브랜치에 push 될 때만 수행합니다.
-
-#cache
-#그레이들을 통해 의존성을 받게 되면 이를 해당 디렉토리에 캐시하여,
-#같은 의존성은 다음 배포 때부터 받지 않게 하도록 설정
-
-#script
-#master 브랜치에 푸시되었을 때 수행하는 명령어
-#여기서는 프로젝트 내부에 둔 gradelw를 통해 clean & build를 한다.
-
-#notifications
-#Travis CI 실행 완료 시 자동으로 알람이 가도록 설정
