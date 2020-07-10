@@ -27,7 +27,7 @@ apply plugin : 'io.spring.dependency-management'
 
 //라이브러리가 속해있는 기업 단체 등을 나타냄
 group 'com.affection.gift'
-version '1.0.1-SNAPSHOT'
+version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 //필요한 라이브러리를 자동 다운로드 받고
