@@ -27,7 +27,10 @@ apply plugin : 'io.spring.dependency-management'
 
 //라이브러리가 속해있는 기업 단체 등을 나타냄
 group 'com.affection.gift'
-version '1.0.1-SNAPSHOT'
+//build.gradle은 Groovy기반의 빌드툴
+//당연히 Groovy언어의 여러문법 사용가능, 여기서는 new Date()로 빌드할 떄마다
+//그 시간이 버전에 추가되도록 구성함
+version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
 //필요한 라이브러리를 자동 다운로드 받고

@@ -30,7 +30,7 @@ JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
 
 echo "> JAR Name : $JAR_NAME"
 
-echo "> $JAR_NAME에 실행권한 추가"
+echo "> $JAR_NAME 에 실행권한 추가"
 #Jar파일은 실행 권한이 없는 상태, nohup으로 실행할 수 있게 실행권한 부여
 chmod +x $JAR_NAME
 
