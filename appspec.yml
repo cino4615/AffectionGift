@@ -17,15 +17,15 @@ permissions:
 #timeout : 60으로 스크립트 실행 60초 이상 수행되면 실패가 됨(무작정 기다릴 수 없으니 시간 제한 둬야함)
 hooks:
   AfterInstall:
-    - location: stop.sh #엔진엑스와 연결되어 있진 않지만, 실행중이던 스트링 부트 종류
+    - location: stop.sh # 엔진엑스와 연결되어 있지 않은 스프링 부트를 종료합니다.
       timeout: 60
       runas: ec2-user
-  ApplicationStart: #엔진엑스와 연겨되어 있지 않는 Port로 새버전의 스프링부트를 시작
-    - location: start.sh
+  ApplicationStart:
+    - location: start.sh # 엔진엑스와 연결되어 있지 않은 Port로 새 버전의 스프링 부트를 시작합니다.
       timeout: 60
       runas: ec2-user
-  ValidateSerivce:
-    - location: health.sh #새 스프링 부트가 정상적으로 실행됐는지 확인
+  ValidateService:
+    - location: health.sh # 새 스프링 부트가 정상적으로 실행됐는지 확인 합니다.
       timeout: 60
       runas: ec2-user
 
