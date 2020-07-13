@@ -9,7 +9,7 @@ function find_idle_profile(){
     #real2를 현재 profile로 사용
     RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile)
 
-    if [ ${RESPONSE_CODE} -ge 400 ] #400보다 크면 (즉, 40x/50x ㅔ얼 모두 포함)
+    if [ ${RESPONSE_CODE} -ge 400 ] # 400 보다 크면 (즉, 40x/50x 에러 모두 포함)
     then
         CURRENT_PROFILE=real2
     else
@@ -18,9 +18,9 @@ function find_idle_profile(){
 
     if [ ${CURRENT_PROFILE} == real1 ]
     then
-        IDLE_PROFILE=real2
+      IDLE_PROFILE=real2
     else
-        IDLE_PROFILE=real1
+      IDLE_PROFILE=real1
     fi
     # bash라는 스크립트는 값을 반환하는 기능이 없음
     #그래서 제일 마지막 줄에 echo로 결과 출력 후, 클라이언트에서 그 값을 잡아서
@@ -29,17 +29,16 @@ function find_idle_profile(){
     echo "${IDLE_PROFILE}"
 }
 
-#쉬고 있는 profile의 port찾기
-function find_idle_port(){
-    #엔진엑스와 연결되어 있지 않은 profile입니다
-    #스프링 부트 프로젝트르르 이 profile로 연결하기 위해 반환
-    IDLE_PROFILE=${find_idle_profile}
+# 쉬고 있는 profile의 port 찾기
+function find_idle_port()
+{
+    IDLE_PROFILE=$(find_idle_profile)
 
     if [ ${IDLE_PROFILE} == real1 ]
     then
-        echo "8081"
+      echo "8081"
     else
-        echo "8082"
+      echo "8082"
     fi
-
 }
+
