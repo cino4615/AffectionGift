@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 //SpringBootApplication이 있는 위치를 기준으로 읽어가기 때문에 항상 프로젝트의 최상단에 위치
 //스프링 부트의 자동설정, 스프링 Bean읽기와 생성을 모두 자동으로 설정
 
-//@EnableJpaAuditing
-//JPA Auditing 어노테이션들을 모두 활성화 할 수 있도록 추가하는 어노테이션
+// @EnableJpaAuditing
+// JPA Auditing 어노테이션들을 모두 활성화 할 수 있도록 추가하는 어노테이션
 @SpringBootApplication
 //SpringBootApplication과 EnableJpaAuditing을 분리, JpaConfig로 이동
 //@EnableJpaAuditing
