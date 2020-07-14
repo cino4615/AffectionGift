@@ -20,6 +20,7 @@ public class IndexController {
     //앞의 경로와 뒤의 파일 확장자는 자동으로 지정
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     //@LoginUser SessionUser user
     //기존에 httpSession.getAttribute("user")로 가져오던 세션 정보 값이 개선됨
