@@ -3,7 +3,7 @@
 #기본적인 스크립트는 step2의 deploy.sh와 유사
 #다른 점이라면 IDLE_PROFILE을 통해 properties파일을 가져오고(application-$IDLE_PROFILE.properties),
 #active profile을 지정하는 것(-Dspring.profiles.active=$IDLE_PROFILE)뿐입니다.
-#여기서도 IDLE_PROFILE을 사용하니 profile.sh을 가져와야함
+#여기서도 IDLE_PROFILE을 사용하니 profile.sh을 가져와야함.
 ABSPATH=$(readlink -f $0)
 ABSDIR=$(dirname $ABSPATH)
 source ${ABSDIR}/profile.sh
