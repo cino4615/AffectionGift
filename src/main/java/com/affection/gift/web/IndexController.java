@@ -20,7 +20,6 @@ public class IndexController {
     //앞의 경로와 뒤의 파일 확장자는 자동으로 지정
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     //@LoginUser SessionUser user
     //기존에 httpSession.getAttribute("user")로 가져오던 세션 정보 값이 개선됨
@@ -42,15 +41,16 @@ public class IndexController {
     public String postsSave(){
         return "posts-save";
     }
+
     //@PathVariable에 적용된 동일한 이름을 갖는 파라미터와 매핑됨
-    //URL의 정의 부분과 메소드의 파라미터 부분에 정의를 하여 사용함
+    //URL의 정의 부분과 메소드의 파라미터 부분에 정의를 하여 사용함 => {변수명}
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model){
         //PostsResponseDto :  Getter와 생성자만 존재하는 Dto 클래스
         PostsResponseDto dto = postsService.findById(id);
 
         model.addAttribute("post", dto);
-        //posts-update.mustache
+
         return "posts-update";
     }
 

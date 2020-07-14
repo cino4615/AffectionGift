@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 
 //@EntityListeners(AuditingEntityListener.class)
 //BaseTimeEntity 클래스에 Auditing(감사) 기능을 포함시킨다
+//생성일 수정일 자동화
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

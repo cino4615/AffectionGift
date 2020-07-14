@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-//롬복
 @Getter
 @NoArgsConstructor
 //JPA
@@ -22,13 +21,12 @@ import javax.persistence.*;
 public class Posts extends BaseTimeEntity {
     //@Id
     //해당 테이블의 PK필드를 나타낸다
-    @Id
     //@GeneratedValue
     //PK의 생성규칙을 나타냄
     //스프링 부트 2.0에서는 GenerationType.IDENTITY옵션을 추가해야만 auto_increment가 됨
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    //웬만하면 Entity의 PK는 Long타입의 Auto_increment추천(bigint타입이 됨)
-
     //@Column
     //테이블의 칼럼을 나타내며 굳이 선언하지 않더라도 해당 클래스의 필드는 모두 칼럼이 됨
     //사용하는 이유는, 기본값 외에 추가 변경이 필요한 옵션이 있으면 사용
@@ -36,10 +34,8 @@ public class Posts extends BaseTimeEntity {
     //타입을 TEXT로 변경하고 싶거나(ex.content) 등의 경우에 사용됨
     @Column(length = 500, nullable = false)
     private String title;
-
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
-
     private String author;
 
     //@Builder
@@ -54,6 +50,7 @@ public class Posts extends BaseTimeEntity {
         this.author = author;
     }
 
+    //author는 수정불가
     public void update(String title, String content){
         this.title = title;
         this.content = content;

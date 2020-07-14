@@ -7,17 +7,12 @@ import com.affection.gift.web.dto.PostsResponseDto;
 import com.affection.gift.web.dto.PostsSaveRequestDto;
 import com.affection.gift.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-//@RequiredArgsConstructor
-//final이 붙은 모든 필드를 인자값으로 하는 생성자를 롬복이 대신 생성해줌
 @RequiredArgsConstructor
 @Service
 public class PostsService {
@@ -41,6 +36,9 @@ public class PostsService {
         return id;
     }
 
+    //.orElseThrow()
+    //라이브러리 메서드가 반환할 결과값이 ‘없음’을 명백하게 표현할 필요가 있는 곳에서
+    // 제한적으로 사용할 수 있는 메커니즘을 제공하는 것이 Optional을 만든 의도였다.
     public PostsResponseDto findById(Long id){
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(()->
