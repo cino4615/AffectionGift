@@ -11,7 +11,7 @@ echo "> 현재 구동중인 어플리케이션 pid확인"
 
 #현재 수행중인 스프링 부트 어플리케이션의 프로세스ID를 찾음
 #실행 중이면 종료하기 위함, 스프링 부트 어플리케이션 이름으로 된 다른 프로그램들이 있을 수 있어
-#jar프로세스를 찾은 뒤 ID를 찾음
+#jar프로세스를 찾은 뒤 ID를 찾음!
 CURRENT_PID=$(pgrep -fl AffectionGift | grep jar | awk '{print $1}')
  
 echo "현재 구동중인 어플리케이션 pid : $CURRENT_PID"
