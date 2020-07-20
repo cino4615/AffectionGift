@@ -3,7 +3,7 @@
 ABSPATH=$(readlink -f $0)
 #현재 stop.sh가 속해있는 경로를 찾음
 ABSDIR=$(dirname $ABSPATH)
-#일종의 import구문, 해당 코드로 인해 stop.sh에서도 profile.sh의 여러 function을 사용할 수 있게 됨
+#일종의 import구문, 해당 코드로 인해 stop.sh에서도 profile.sh의 여러 function을 사용할 수 있게 됨!
 source ${ABSDIR}/profile.sh
 
 IDLE_PORT=$(find_idle_port)
