@@ -62,6 +62,7 @@ public class PostsRepositoryTest {
 
     @Test
     public void BaseTimeEntity_등록(){
+        //특정 값이 주어지고
         //given
         LocalDateTime now = LocalDateTime.of(2020, 7, 3, 0,0,0);
         postsRepository.save(Posts.builder()
@@ -69,9 +70,11 @@ public class PostsRepositoryTest {
                     .content("content")
                     .author("author")
                     .build());
+        //어떤 이벤트가 발생했을 때
         //when
         List<Posts> postsList = postsRepository.findAll();
 
+        //그에대한 결과를 보장해야 한다
         //then
         Posts posts = postsList.get(0);
 

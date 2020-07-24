@@ -15,6 +15,10 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+//Mock이란?
+//실제 객체를 만들기엔 비용과 시간이 너무 들거나 의존성이 길게 펼쳐져 있어
+//제대로 구현이 어려울 경우, 가짜 객체를 만들어서 사용한다.
+
 //@RunWith
 //테스트를 진행할 때 JUnit에 내장된 실행자 외에 다른 실행자를 실행시킴
 //SpringRunner라는 스프링 실행자를 사용
